@@ -3,109 +3,201 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f0e6">
+  <meta name="theme-color" content="#102b25">
+  <meta name="description" content="Një kujtesë për ta lënë tualetin të pastër.">
   <title>Nese Zdin me ja Mat ULU !</title>
   <style>
     :root {
       color-scheme: light;
-      --ink: #211e18;
-      --yellow: #ffcc35;
-      --tile: #f4f0e6;
+      --forest: #102b25;
+      --cream: #f7f8ef;
+      --lime: #d6fb91;
+      --mint: #e0efdb;
+      --line: #cbd7c6;
+      --gutter: clamp(1.5rem, 4.3vw, 3.5rem);
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
     body {
+      min-height: 100svh;
+      margin: 0;
       display: grid;
       place-items: center;
-      min-block-size: 100vh;
-      min-block-size: 100svh;
-      margin: 0;
-      padding: clamp(20px, 5vw, 56px);
-      color: var(--ink);
-      background-color: var(--tile);
-      background-image:
-        linear-gradient(to right, #211e1814 1px, transparent 1px),
-        linear-gradient(to bottom, #211e1814 1px, transparent 1px);
-      background-size: 64px 64px;
-      background-position: center;
+      padding: clamp(.75rem, 4vw, 3.75rem);
+      color: var(--forest);
+      background: #dce8da;
+      background-image: radial-gradient(ellipse at top, #f3f6ec, transparent 75%);
     }
 
-    .sign {
-      position: relative;
-      inline-size: min(100%, 640px);
+    main {
+      width: min(100%, 70rem);
       overflow: hidden;
-      border: 4px solid var(--ink);
-      border-radius: clamp(14px, 3vw, 24px);
-      background-color: var(--yellow);
-      box-shadow: 7px 9px 0 var(--ink), 10px 16px 28px #382b1b26;
-      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: clamp(1.1rem, 3vw, 2rem);
+      background: var(--cream);
+      box-shadow: 0 1.25rem 4.5rem #102b251c;
     }
 
-    .sign::before, .sign::after {
-      position: absolute;
-      inset-block-start: clamp(15px, 3vw, 24px);
-      inline-size: 7px;
-      block-size: 7px;
-      border: 2px solid var(--ink);
-      border-radius: 50%;
-      content: "";
+    .hero { display: grid; grid-template-columns: 1.12fr 1fr; }
+
+    .message {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding: var(--gutter);
+      color: var(--cream);
+      background: var(--forest);
     }
 
-    .sign::before { inset-inline-start: clamp(15px, 3vw, 24px); }
-    .sign::after { inset-inline-end: clamp(15px, 3vw, 24px); }
-
-    .pictogram {
-      position: relative;
-      display: block;
-      inline-size: 66px;
-      block-size: 66px;
-      margin: clamp(27px, 5vw, 44px) auto 0;
-      border-radius: 50%;
-      background: var(--ink);
+    .context {
+      align-self: flex-start;
+      margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
+      padding: 0 0 .6rem;
+      border-bottom: 2px solid var(--lime);
+      color: var(--lime);
+      font-size: .75rem;
+      font-weight: 750;
+      letter-spacing: .14em;
+      text-transform: uppercase;
     }
-
-    .tank, .bowl, .base { position: absolute; background: var(--yellow); }
-    .tank { inset: 17px auto auto 17px; inline-size: 10px; block-size: 17px; border-radius: 2px; }
-    .bowl { inset: 32px auto auto 17px; inline-size: 32px; block-size: 12px; border-radius: 2px 2px 12px 12px; }
-    .base { inset: 42px auto auto 20px; inline-size: 16px; block-size: 8px; border-radius: 0 0 2px 2px; }
 
     h1 {
       margin: 0;
-      font-family: "Arial Black", "Segoe UI", sans-serif;
-      font-weight: 900;
+      font-size: clamp(2rem, 4.7vw, 4.2rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+      font-weight: 800;
     }
 
-    .message {
+    .lead { display: block; text-wrap: balance; }
+
+    h1 strong {
       display: block;
-      padding: 22px 15px clamp(23px, 5vw, 38px);
-      font-size: clamp(1.375rem, 5.9vw, 3.5rem);
-      line-height: 1.1;
-      letter-spacing: -.06em;
-      text-wrap: balance;
+      margin: .06em 0 0;
+      color: var(--lime);
+      font-size: clamp(4.3rem, 10.2vw, 8.75rem);
+      line-height: .98;
+      letter-spacing: -.085em;
+      white-space: nowrap;
     }
 
-    .emphasis {
-      display: block;
-      padding: clamp(17px, 4vw, 29px) 10px clamp(23px, 5vw, 37px);
-      background: var(--ink);
-      color: var(--yellow);
-      font-family: Impact, "Arial Black", "Segoe UI", sans-serif;
-      font-size: clamp(4rem, 17vw, 9.5rem);
-      line-height: .95;
-      letter-spacing: -.025em;
+    .instruction {
+      margin: clamp(1.4rem, 3vw, 2.12rem) 0 0;
+      font-size: clamp(1.16rem, 2.45vw, 1.72rem);
+      line-height: 1.35;
+      font-weight: 650;
     }
 
-    @media print {
-      body { min-block-size: auto; }
-      .sign { box-shadow: none; print-color-adjust: exact; }
+    .photo {
+      position: relative;
+      margin: 0;
+      min-height: clamp(22rem, 38vw, 32rem);
+      isolation: isolate;
+      background: #8dbf95;
+    }
+
+    .photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .check {
+      position: absolute;
+      right: clamp(.95rem, 2.5vw, 1.65rem);
+      bottom: clamp(.95rem, 2.5vw, 1.65rem);
+      display: grid;
+      place-items: center;
+      width: clamp(2.75rem, 5.4vw, 4rem);
+      aspect-ratio: 1;
+      border: 2px solid var(--forest);
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 .23rem 0 var(--forest);
+    }
+
+    .check::after {
+      content: "";
+      width: 44%;
+      height: 25%;
+      border: solid var(--forest);
+      border-width: 0 0 .23rem .23rem;
+      transform: translateY(-15%) rotate(-45deg);
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .action {
+      display: flex;
+      align-items: center;
+      gap: clamp(.65rem, 2vw, 1.15rem);
+      min-width: 0;
+      padding: clamp(1rem, 2.6vw, 1.9rem);
+      font-size: clamp(1rem, 1.9vw, 1.25rem);
+      line-height: 1.22;
+      font-weight: 750;
+    }
+
+    .action + .action { border-inline-start: 1px solid var(--line); }
+
+    .icon {
+      flex: 0 0 auto;
+      width: clamp(3rem, 5.6vw, 3.75rem);
+      aspect-ratio: 1;
+      border: 1px solid #bfd2bf;
+      border-radius: .9rem;
+      background: var(--mint) url("cleanup-icons.png") no-repeat;
+      background-size: 300% 100%;
+    }
+
+    .icon-flush { background-position: left; }
+    .icon-wipe { background-position: center; }
+    .icon-bin { background-position: right; }
+
+    @media (max-width: 680px) {
+      .hero { grid-template-columns: 1fr; }
+      .message { padding-block: 1.65rem 1.8rem; }
+      .context { margin-bottom: 1.25rem; }
+      h1 { font-size: clamp(1.7rem, 6.7vw, 2.9rem); }
+      h1 strong { font-size: clamp(4.4rem, 18vw, 7.5rem); }
+      .instruction { margin-top: 1rem; }
+      .photo { min-height: 0; aspect-ratio: 9 / 8; }
+      .photo img { object-position: 50% 30%; }
+      .actions { grid-template-columns: 1fr; }
+      .action { padding: .72rem var(--gutter); }
+      .action + .action { border-inline-start: 0; border-block-start: 1px solid var(--line); }
     }
   </style>
 </head>
 <body>
-  <main class="sign">
-    <span class="pictogram" aria-hidden="true"><i class="tank"></i><i class="bowl"></i><i class="base"></i></span>
-    <h1><span class="message">Nese Zdin me ja Mat</span> <span class="emphasis">ULU !</span></h1>
+  <main>
+    <header class="hero">
+      <div class="message">
+        <p class="context">Tualet i përbashkët</p>
+        <h1><span class="lead">Nese Zdin me ja Mat</span> <strong>ULU !</strong></h1>
+        <p class="instruction">Mos e lër tualetin pis.</p>
+      </div>
+      <figure class="photo">
+        <img src="clean-toilet.webp" width="960" height="960" alt="Tualet i pastër me ulësen e ulur.">
+        <span class="check" aria-hidden="true"></span>
+      </figure>
+    </header>
+    <ul class="actions" role="list">
+      <li class="action"><span class="icon icon-flush" aria-hidden="true"></span>Shpëlaje tualetin</li>
+      <li class="action"><span class="icon icon-wipe" aria-hidden="true"></span>Pastroje ulësen</li>
+      <li class="action"><span class="icon icon-bin" aria-hidden="true"></span>Hidhi mbeturinat në kosh</li>
+    </ul>
   </main>
 </body>
 </html>
