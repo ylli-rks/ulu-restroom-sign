@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e6">
+  <title>Nese Zdin me ja Mat ULU !</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #211e18;
+      --yellow: #ffcc35;
+      --tile: #f4f0e6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      display: grid;
+      place-items: center;
+      min-block-size: 100vh;
+      min-block-size: 100svh;
+      margin: 0;
+      padding: clamp(20px, 5vw, 56px);
+      color: var(--ink);
+      background-color: var(--tile);
+      background-image:
+        linear-gradient(to right, #211e1814 1px, transparent 1px),
+        linear-gradient(to bottom, #211e1814 1px, transparent 1px);
+      background-size: 64px 64px;
+      background-position: center;
+    }
+
+    .sign {
+      position: relative;
+      inline-size: min(100%, 640px);
+      overflow: hidden;
+      border: 4px solid var(--ink);
+      border-radius: clamp(14px, 3vw, 24px);
+      background-color: var(--yellow);
+      box-shadow: 7px 9px 0 var(--ink), 10px 16px 28px #382b1b26;
+      text-align: center;
+    }
+
+    .sign::before, .sign::after {
+      position: absolute;
+      inset-block-start: clamp(15px, 3vw, 24px);
+      inline-size: 7px;
+      block-size: 7px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .sign::before { inset-inline-start: clamp(15px, 3vw, 24px); }
+    .sign::after { inset-inline-end: clamp(15px, 3vw, 24px); }
+
+    .pictogram {
+      position: relative;
+      display: block;
+      inline-size: 66px;
+      block-size: 66px;
+      margin: clamp(27px, 5vw, 44px) auto 0;
+      border-radius: 50%;
+      background: var(--ink);
+    }
+
+    .tank, .bowl, .base { position: absolute; background: var(--yellow); }
+    .tank { inset: 17px auto auto 17px; inline-size: 10px; block-size: 17px; border-radius: 2px; }
+    .bowl { inset: 32px auto auto 17px; inline-size: 32px; block-size: 12px; border-radius: 2px 2px 12px 12px; }
+    .base { inset: 42px auto auto 20px; inline-size: 16px; block-size: 8px; border-radius: 0 0 2px 2px; }
+
+    h1 {
+      margin: 0;
+      font-family: "Arial Black", "Segoe UI", sans-serif;
+      font-weight: 900;
+    }
+
+    .message {
+      display: block;
+      padding: 22px 15px clamp(23px, 5vw, 38px);
+      font-size: clamp(1.375rem, 5.9vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -.06em;
+      text-wrap: balance;
+    }
+
+    .emphasis {
+      display: block;
+      padding: clamp(17px, 4vw, 29px) 10px clamp(23px, 5vw, 37px);
+      background: var(--ink);
+      color: var(--yellow);
+      font-family: Impact, "Arial Black", "Segoe UI", sans-serif;
+      font-size: clamp(4rem, 17vw, 9.5rem);
+      line-height: .95;
+      letter-spacing: -.025em;
+    }
+
+    @media print {
+      body { min-block-size: auto; }
+      .sign { box-shadow: none; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sign">
+    <span class="pictogram" aria-hidden="true"><i class="tank"></i><i class="bowl"></i><i class="base"></i></span>
+    <h1><span class="message">Nese Zdin me ja Mat</span> <span class="emphasis">ULU !</span></h1>
+  </main>
+</body>
+</html>
